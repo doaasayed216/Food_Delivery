@@ -1,0 +1,23 @@
+button
+{
+	padding: 15px;
+	border: 0;
+	color: white;
+	font-weight: bold;
+	background-color: brown;
+}
+
+button:hover 
+{
+	background-color: #ed5c5c;
+}
+
+.delete
+{
+	padding: 10px;
+}
+
+.empty
+{
+	margin-left: 5%;
+}

@@ -1,0 +1,44 @@
+form
+{
+	width: 500px;
+	margin: auto;
+	padding: 40px 40px 40px 40px;
+	background-color: white;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+input
+{
+	width: 100px;
+	margin-right: 20px;
+	padding: 10px;
+}
+
+.name
+{
+	width: 470px;
+	box-sizing: border-box;
+}
+
+h1
+{
+	text-align: center;
+	margin-top: 8%;
+}
+
+button
+{
+	background-color: brown;
+	color: white;
+	font-weight: bold;
+	padding: 15px;
+	width: 100px;
+	border :0;
+	margin: auto;
+	margin-top: 20px;
+}
+
+button:hover
+{
+	background-color: #ed5c5c;
+}

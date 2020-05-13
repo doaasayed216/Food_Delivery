@@ -1,0 +1,41 @@
+.delete ,.empty , .continue , .check
+{
+	padding: 15px;
+	border: 0;
+	color: white;
+	margin-left:  5%;
+} 
+
+.delete
+{
+	background-color: brown;
+	padding: 10px;
+}
+
+.empty
+{
+	background-color: brown;
+}
+
+.continue
+{
+	background-color: orange;
+}
+
+.check
+{
+	background-color: red;
+	margin-left: 65%;
+}
+
+
+.cart_table th
+{
+	background-color: #ddd;
+}
+
+.cart_table td , .cart_table th
+{
+	text-align: center;
+	padding: 5px;
+}
