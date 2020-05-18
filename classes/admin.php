@@ -32,7 +32,13 @@
 
 		public function add_user()
 		{
-				
+			$query = "INSERT into manager(fullname , username , email , password , contact) values('$this->fullname' , '$this->username' , '$this->email' , '$this->password' , '$this->contact')";
+			$success = $this->conn->query($query);
+			if($success)
+				$this->message = 'Added successfully';
+	
+			else
+				$this->message = 'Something wrong, please try another username';				
 		}
 
 		public function signout()
