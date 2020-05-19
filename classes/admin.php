@@ -1,6 +1,6 @@
 <?php
 	include 'user.php';
-
+	include 'item.php';
 	class Admin extends User
 	{
 		public $message;
@@ -38,7 +38,7 @@
 				$this->message = 'Added successfully';
 	
 			else
-				$this->message = 'Something wrong, please try another username';				
+				$this->message = 'Something wrong, please try another username';			
 		}
 
 		public function signout()
@@ -49,5 +49,36 @@
 			header("Location: admin_login.php");
 			exit();
 		}
+
+		public function view_one_item($id)
+		{
+			$item = new Item($this->conn);
+			$item->id = $id;
+			$row = $item->view_one();
+			return $row;
+		}
+
+		public function update_item($id , $name , $description , $price , $path)
+		{
+			$item = new Item($this->conn);
+
+			$item->id = $id;
+			$item->name = $name;
+			$item->description = $description;
+			$item->price = $price;
+			$item->path = $path;
+
+			$success = $item->update();
+
+			if ($success) {
+				$this->message = 'Updated successfully';
+			}
+
+			else{
+				$this->message = 'Something wrong, please Try again';
+			}
+
+		}
+
 	}	
 ?>
