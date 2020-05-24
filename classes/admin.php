@@ -1,6 +1,8 @@
 <?php
 	include 'user.php';
 	include 'item.php';
+	include 'order.php';
+
 	class Admin extends User
 	{
 		public $message;
@@ -77,7 +79,36 @@
 			else{
 				$this->message = 'Something wrong, please Try again';
 			}
+		}
 
+		public function view_all_orders()
+		{
+			$order = new Order($this->conn);
+			$stmt = $order->view_all();
+			
+			if ($stmt) {
+				return $stmt;
+			}
+			else{
+				$message = 'There are no orders';
+				return $message;
+			}
+		}
+
+		public function delete_order($username , $food_name)
+		{
+			$order = new Order($this->conn);
+			$order->username = $username;
+			$order->food_name = $food_name;
+			$success = $order->delete();
+
+			if($success){
+				$this->message = 'Deleted successfully';
+			}
+
+			else{
+				$this->message = 'Something wrong, please Try again';
+			}
 		}
 
 	}	
