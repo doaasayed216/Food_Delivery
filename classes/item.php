@@ -41,5 +41,14 @@
 
 			return $success;
 		}
+
+		public function view_all()
+		{
+			$query = "SELECT * from items ORDER BY food_id";
+			$stmt = $this->conn->prepare( $query );
+        	$stmt->execute();
+ 
+        	return $stmt;
+		}
 	}
 ?>
