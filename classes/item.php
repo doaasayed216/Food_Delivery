@@ -50,5 +50,12 @@
  
         	return $stmt;
 		}
+
+		public function add()
+		{
+			$query = "INSERT into items(food_name , description , price , img_path) values ('$this->name' , '$this->description' , '$this->price' , '$this->path')";
+			$success = $this->conn->query($query);
+			return $success;	
+		}
 	}
 ?>
