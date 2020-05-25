@@ -57,5 +57,13 @@
 			$success = $this->conn->query($query);
 			return $success;	
 		}
+
+		public function delete()
+		{
+			$query = "DELETE from items where food_name = ?";
+			$stmt = $this->conn->prepare($query);
+			$success = $stmt->execute(array($this->name));
+			return $success;
+		}
 	}
 ?>
