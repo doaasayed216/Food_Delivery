@@ -111,5 +111,18 @@
 			}
 		}
 
+		public function view_all_items()
+		{
+			$item = new Item($this->conn);
+			$stmt = $item->view_all();
+			
+			if ($stmt) {
+				return $stmt;
+			}
+			else{
+				$message = 'There is no items in your food list';
+				return $message;
+			}
+		}
 	}	
 ?>
