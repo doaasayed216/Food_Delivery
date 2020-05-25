@@ -124,5 +124,20 @@
 				return $message;
 			}
 		}
+
+		public function add_item($name , $description , $price , $path)
+		{
+			$item = new Item($this->conn);
+			$item->name = $name;
+			$item->description = $description;
+			$item->price = $price;
+			$item->path = $path;
+			$success = $item->add();
+			if($success)
+				$this->message = 'Added successfully';
+			else
+				$this->message = 'Something wrong, please Try again';
+		}
+
 	}	
 ?>
