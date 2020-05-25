@@ -111,5 +111,33 @@
 			}
 		}
 
+		public function view_all_items()
+		{
+			$item = new Item($this->conn);
+			$stmt = $item->view_all();
+			
+			if ($stmt) {
+				return $stmt;
+			}
+			else{
+				$message = 'There is no items in your food list';
+				return $message;
+			}
+		}
+
+		public function add_item($name , $description , $price , $path)
+		{
+			$item = new Item($this->conn);
+			$item->name = $name;
+			$item->description = $description;
+			$item->price = $price;
+			$item->path = $path;
+			$success = $item->add();
+			if($success)
+				$this->message = 'Added successfully';
+			else
+				$this->message = 'Something wrong, please Try again';
+		}
+
 	}	
 ?>
