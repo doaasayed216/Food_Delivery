@@ -139,5 +139,16 @@
 				$this->message = 'Something wrong, please Try again';
 		}
 
+		public function delete_item($name)
+		{
+			$item = new Item($this->conn);
+			$item->name = $name;
+			$success = $item->delete();
+
+			if($success)
+				$this->message = 'Deleted successfully';
+			else
+				$this->message = 'Something wrong, please Try again';
+		}
 	}	
 ?>
