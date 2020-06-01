@@ -1,5 +1,6 @@
 <?php
 	include 'user.php';
+	include 'item.php';
 
 	class Customer extends User
 	{
@@ -55,6 +56,19 @@
 			session_destroy();
 			header("Location: customer_login.php");
 			exit();
+		}
+
+		public function view_menu()
+		{
+			$item = new Item($this->conn);
+			$stmt = $item->view_all();
+			$num = $stmt->rowCount();
+			if ($num > 0) {
+				return $stmt;
+			}
+			else{
+				$this->message = 'There is no items in your food list';
+			}
 		}
 	}	
 ?>
