@@ -30,5 +30,10 @@
 
 			return $success;
 		}
+
+		public function add(){
+			$query = "INSERT into orders(food_name , price , quantity, username) values ('$this->food_name' , '$this->price' , '$this->quantity' , '$this->username')";
+			$success = $this->conn->query($query);
+		}
 	}
 ?>
