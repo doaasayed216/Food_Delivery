@@ -78,6 +78,17 @@ if($_SESSION['username'])
 }
 
 ?>
+<?php 
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+      $food_name = $_POST['food_name'];
+      $price = $_POST['price'];
+      $quantity = $_POST['quantity'];
+      $username = $_SESSION['username'];
+      $customer->add_to_cart($food_name , $price , $quantity , $username);
+      header("Location: my_cart.php");
+}
+?>
 
 <footer class="footer">
   <br>
