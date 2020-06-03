@@ -1,6 +1,7 @@
 <?php
 	include 'user.php';
 	include 'item.php';
+	include 'cart.php';
 
 	class Customer extends User
 	{
@@ -69,6 +70,48 @@
 			else{
 				$this->message = 'There is no items in your food list';
 			}
+		}
+
+		public function add_to_cart($name , $price , $quantity , $username)
+		{
+			$cart = new Cart($this->conn);
+			$cart->food_name = $name;
+			$cart->price = $price;
+			$cart->quantity = $quantity;
+			$cart->username = $username;
+			$cart->add();
+		}
+
+		public function search_for_cart($username)
+		{
+			$cart = new Cart($this->conn);
+			$cart->username = $username;
+			$stmt = $cart->find();
+			if($stmt)
+				return $stmt;
+		}
+
+		public function delete_one_item($username , $foodname)
+		{
+			$cart = new Cart($this->conn);
+			$cart->username = $username;
+			$cart->food_name = $foodname;
+			$success = $cart->delete_one();
+			if($success)
+				$this->message = 'Deleted successfully';
+			else
+				$this->message = 'Something wrong, please Try again';
+		}
+
+		public function delete_cart($username)
+		{
+			$cart = new Cart($this->conn);
+			$cart->username = $username;
+			$success = $cart->delete_all();
+			if($success)
+				$this->message = 'Deleted successfully';
+			else
+				$this->message = 'Something wrong, please Try again';
 		}
 	}	
 ?>
