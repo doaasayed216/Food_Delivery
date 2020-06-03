@@ -2,6 +2,7 @@
 	include 'user.php';
 	include 'item.php';
 	include 'cart.php';
+	include 'order.php';
 
 	class Customer extends User
 	{
@@ -112,6 +113,16 @@
 				$this->message = 'Deleted successfully';
 			else
 				$this->message = 'Something wrong, please Try again';
+		}
+
+		public function add_order($name , $price , $quantity , $username)
+		{
+			$order = new Order($this->conn);
+			$order->food_name = $name;
+			$order->price = $price;
+			$order->quantity = $quantity;
+			$order->username = $username;
+			$order->add();
 		}
 	}	
 ?>
